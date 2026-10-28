@@ -21,6 +21,11 @@ let currentState = null;
 let roomCode = null;
 let disconnected = false;
 
+const inviteCode = new URLSearchParams(window.location.search).get("room");
+if (inviteCode && /^[A-HJ-NP-Z2-9]{4}$/i.test(inviteCode)) {
+  roomCodeInput.value = inviteCode.toUpperCase();
+}
+
 function setFeedback(element, message) {
   element.textContent = message || "";
 }
@@ -62,13 +67,26 @@ roomCodeInput.addEventListener("input", () => {
 });
 
 copyBtn.addEventListener("click", async () => {
+  const inviteUrl = new URL(window.location.href);
+  inviteUrl.searchParams.set("room", roomCode);
   try {
-    await navigator.clipboard.writeText(roomCode);
-    copyBtn.textContent = "Copied!";
-  } catch {
-    setFeedback(gameFeedback, `Share this room code: ${roomCode}`);
+    if (navigator.share) {
+      await navigator.share({
+        title: "Join my XO Arena game",
+        text: `Play Tic-Tac-Toe with me. Room code: ${roomCode}`,
+        url: inviteUrl.toString()
+      });
+      copyBtn.textContent = "Shared!";
+    } else {
+      await navigator.clipboard.writeText(inviteUrl.toString());
+      copyBtn.textContent = "Copied!";
+    }
+  } catch (error) {
+    if (error && typeof error === "object" && "name" in error && error.name === "AbortError") return;
+    setFeedback(gameFeedback, `Share this invite link: ${inviteUrl.toString()}`);
+  } finally {
+    setTimeout(() => { copyBtn.textContent = "Invite"; }, 1400);
   }
-  setTimeout(() => { copyBtn.textContent = "Copy"; }, 1400);
 });
 
 cells.forEach((cell) => {

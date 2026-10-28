@@ -62,6 +62,17 @@ http://localhost:3000
 
 > If port 3000 is already in use, stop the other process and try again.
 
+## Publish a Public Game on Render
+
+This project includes a Render Blueprint (`render.yaml`) configured for the Node.js server, WebSocket connections, and `/health` health check.
+
+1. Push this project to a GitHub repository.
+2. In the Render Dashboard, choose **New → Blueprint** and connect this repository.
+3. Review the `xo-arena` web service settings and choose **Apply**.
+4. Wait for the deployment to finish, then open its `onrender.com` URL and share it with players.
+
+Players can share an invite link or join with the four-character room code. The free instance may spin down while idle, so the first visit after inactivity can take a little longer. Rooms are stored in server memory; restarting or redeploying clears active rooms. Keep this service to one running instance.
+
 ## GitHub Repository
 
 https://github.com/aksharareddy-cmyk/Tic-Tac-Toe-App
