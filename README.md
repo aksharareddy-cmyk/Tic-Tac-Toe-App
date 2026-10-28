@@ -33,19 +33,34 @@ online-tic-tac-toe/
 └── README.md
 ```
 
-## Run Locally
+## How to Run
+
+1. Open PowerShell or a terminal.
+2. Navigate to the project folder:
 
 ```bash
-cd online-tic-tac-toe
+cd "C:\Users\yanal\Downloads\online-tic-tac-toe\online-tic-tac-toe"
+```
+
+3. Install dependencies:
+
+```bash
 npm install
+```
+
+4. Start the server:
+
+```bash
 node server.js
 ```
 
-Then open:
+5. Open the app in your browser:
 
 ```text
 http://localhost:3000
 ```
+
+> If port 3000 is already in use, stop the other process and try again.
 
 ## GitHub Repository
 
