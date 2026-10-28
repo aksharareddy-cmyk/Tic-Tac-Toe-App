@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>XO Arena — Online Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div class="logo" aria-hidden="true">XO</div>
+      <p class="eyebrow">REAL-TIME MULTIPLAYER</p>
+      <h1>XO <span>Arena</span></h1>
+      <p class="subtitle">A little friendly competition, wherever you are.</p>
+    </header>
+
+    <section class="panel lobby" id="lobby">
+      <h2>Play with a friend</h2>
+      <p class="muted">Create a room and share its four-character code, or join a friend's room.</p>
+      <button class="primary-button" id="createBtn">＋ Create a room</button>
+      <div class="or-divider"><span>OR JOIN A ROOM</span></div>
+      <form id="joinForm" class="join-form">
+        <label class="sr-only" for="roomCodeInput">Four-character room code</label>
+        <input id="roomCodeInput" maxlength="4" minlength="4" placeholder="ABCD" autocomplete="off" required>
+        <button class="secondary-button" type="submit">Join</button>
+      </form>
+      <p class="feedback" id="lobbyFeedback" role="status"></p>
+    </section>
+
+    <section class="panel game hidden" id="gamePanel">
+      <div class="game-topline">
+        <div>
+          <p class="eyebrow">ROOM CODE</p>
+          <div class="room-code-row"><strong id="roomCodeLabel">----</strong><button id="copyBtn" class="copy-button" type="button" aria-label="Copy room code">Copy</button></div>
+        </div>
+        <button id="leaveBtn" class="text-button" type="button">Leave room</button>
+      </div>
+
+      <div class="players">
+        <div class="player-card" id="playerX">
+          <span class="symbol x-symbol">X</span>
+          <span class="player-name">Player X <small id="xYou"></small></span>
+          <span class="connection-dot" id="xDot"></span>
+        </div>
+        <div class="versus">VS</div>
+        <div class="player-card" id="playerO">
+          <span class="symbol o-symbol">O</span>
+          <span class="player-name">Player O <small id="oYou"></small></span>
+          <span class="connection-dot" id="oDot"></span>
+        </div>
+      </div>
+
+      <div class="status-card" aria-live="polite">
+        <div class="status-mark" id="statusMark">…</div>
+        <div><strong id="statusTitle">Waiting for a player</strong><p id="statusText">Share the room code to get started.</p></div>
+      </div>
+
+      <div class="board" id="board" role="group" aria-label="Tic-Tac-Toe board">
+        <button class="cell" data-index="0" aria-label="Square 1"></button>
+        <button class="cell" data-index="1" aria-label="Square 2"></button>
+        <button class="cell" data-index="2" aria-label="Square 3"></button>
+        <button class="cell" data-index="3" aria-label="Square 4"></button>
+        <button class="cell" data-index="4" aria-label="Square 5"></button>
+        <button class="cell" data-index="5" aria-label="Square 6"></button>
+        <button class="cell" data-index="6" aria-label="Square 7"></button>
+        <button class="cell" data-index="7" aria-label="Square 8"></button>
+        <button class="cell" data-index="8" aria-label="Square 9"></button>
+      </div>
+
+      <button id="restartBtn" class="primary-button restart-button hidden" type="button">↻ Play again</button>
+      <p class="feedback" id="gameFeedback" role="status"></p>
+    </section>
+
+    <footer>Made for two players <span>•</span> Moves are validated by the server</footer>
+  </main>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

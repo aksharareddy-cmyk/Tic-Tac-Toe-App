@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  color-scheme: dark;
+  --bg: #101827;
+  --panel: #182337;
+  --panel-light: #202e45;
+  --text: #f5f7fb;
+  --muted: #9ba9bd;
+  --purple: #a78bfa;
+  --cyan: #67e8f9;
+  --line: rgba(255,255,255,.09);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; padding: 32px 16px;
+  color: var(--text); font-family: 'DM Sans', sans-serif;
+  background: radial-gradient(ellipse at 50% 0%, #263353 0%, var(--bg) 55%);
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+.app-shell { width: min(100%, 480px); margin: 0 auto; }
+.hero { text-align: center; margin: 10px 0 26px; }
+.logo {
+  display: grid; place-items: center; width: 58px; height: 58px; margin: 0 auto 18px;
+  border-radius: 18px; color: #111827; font: 700 22px 'Space Grotesk', sans-serif;
+  background: linear-gradient(135deg, var(--cyan), var(--purple)); box-shadow: 0 10px 35px #67e8f926;
+}
+.eyebrow { margin: 0 0 7px; color: var(--cyan); font-size: 10px; letter-spacing: .2em; font-weight: 700; }
+h1 { margin: 0; font: 700 clamp(34px, 8vw, 44px) 'Space Grotesk', sans-serif; letter-spacing: -.05em; }
+h1 span { color: var(--purple); }
+.subtitle { margin: 9px 0 0; color: var(--muted); font-size: 14px; }
+.panel { background: rgba(24,35,55,.92); border: 1px solid var(--line); border-radius: 24px; padding: 25px; box-shadow: 0 22px 65px #00000025; }
+h2 { margin: 0 0 8px; font: 600 21px 'Space Grotesk', sans-serif; }
+.muted { color: var(--muted); font-size: 13px; line-height: 1.6; margin: 0 0 22px; }
+.primary-button, .secondary-button {
+  min-height: 48px; border: 0; border-radius: 13px; font-weight: 700; transition: transform .15s, opacity .15s;
+}
+.primary-button { width: 100%; color: #101827; background: linear-gradient(100deg, var(--cyan), #a5f3fc); }
+.secondary-button { padding: 0 20px; color: #101827; background: var(--purple); }
+.primary-button:hover, .secondary-button:hover { transform: translateY(-1px); }
+.primary-button:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+.or-divider { display: flex; align-items: center; gap: 12px; margin: 22px 0; color: #8291a8; font-size: 10px; letter-spacing: .12em; font-weight: 700; }
+.or-divider::before, .or-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.join-form { display: flex; gap: 10px; }
+.join-form input {
+  width: 100%; min-width: 0; border: 1px solid var(--line); border-radius: 13px; padding: 0 15px;
+  color: var(--text); background: #101827; font: 700 18px 'Space Grotesk', sans-serif; letter-spacing: .22em; text-transform: uppercase;
+}
+.join-form input::placeholder { color: #64748b; }
+.feedback { min-height: 18px; margin: 12px 0 0; color: var(--cyan); font-size: 12px; line-height: 1.5; }
+.hidden { display: none !important; }
+.game { padding: 20px; }
+.game-topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.room-code-row { display: flex; align-items: center; gap: 9px; }
+.room-code-row strong { font: 700 24px 'Space Grotesk', sans-serif; letter-spacing: .18em; }
+.copy-button, .text-button { border: 1px solid var(--line); border-radius: 9px; padding: 7px 10px; color: var(--muted); background: transparent; font-size: 11px; }
+.text-button { border: 0; }
+.players { display: flex; align-items: center; gap: 9px; margin: 23px 0 17px; }
+.player-card { display: flex; align-items: center; gap: 9px; flex: 1; min-width: 0; padding: 12px 9px; border: 1px solid var(--line); border-radius: 14px; background: #10182780; }
+.player-card.active { border-color: #a78bfa99; background: #a78bfa12; }
+.symbol { display: grid; place-items: center; flex: 0 0 34px; width: 34px; height: 34px; border-radius: 10px; font: 700 20px 'Space Grotesk', sans-serif; }
+.x-symbol { color: var(--cyan); background: #67e8f91a; }
+.o-symbol { color: var(--purple); background: #a78bfa1a; }
+.player-name { min-width: 0; font-size: 12px; font-weight: 700; }
+.player-name small { display: block; color: var(--cyan); font-size: 9px; margin-top: 2px; }
+.connection-dot { width: 7px; height: 7px; margin-left: auto; border-radius: 50%; background: #526078; }
+.connection-dot.connected { background: #4ade80; box-shadow: 0 0 8px #4ade8066; }
+.versus { color: #718096; font: 700 9px 'Space Grotesk', sans-serif; }
+.status-card { display: flex; align-items: center; gap: 12px; margin-bottom: 17px; padding: 13px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel-light); }
+.status-mark { display: grid; place-items: center; flex: 0 0 36px; width: 36px; height: 36px; border-radius: 11px; color: var(--cyan); background: #67e8f914; font-size: 18px; font-weight: 700; }
+.status-card strong { font-size: 13px; }
+.status-card p { margin: 3px 0 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+.board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+.cell {
+  aspect-ratio: 1; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 17px;
+  background: #101827; color: var(--text); font: 700 clamp(38px, 12vw, 54px) 'Space Grotesk', sans-serif;
+  transition: border-color .15s, background .15s, transform .15s;
+}
+.cell:enabled:hover { border-color: #a78bfa99; background: #202e45; }
+.cell:enabled:active { transform: scale(.97); }
+.cell.x { color: var(--cyan); }
+.cell.o { color: var(--purple); }
+.cell:disabled { cursor: default; }
+.restart-button { margin-top: 17px; }
+footer { text-align: center; color: #74839a; font-size: 11px; margin: 22px 0 8px; }
+footer span { padding: 0 5px; color: var(--purple); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+@media (max-width: 380px) {
+  body { padding: 18px 10px; }
+  .panel { padding: 18px; border-radius: 20px; }
+  .game { padding: 14px; }
+  .player-card { gap: 6px; padding: 9px 6px; }
+  .symbol { flex-basis: 29px; width: 29px; height: 29px; }
+  .player-name { font-size: 10px; }
+  .board { gap: 6px; }
+  .cell { border-radius: 13px; }
+}
